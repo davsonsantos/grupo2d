@@ -25,3 +25,4 @@ class Inicio extends CI_Controller {
 /* End of file welcome.php */
 /* Location: ./application/controllers/inicio.php */
 /*tudo funcionando para commit direto pelo aptana*/
+/*aprtir de agora aqui no trablho meus projetos so no aptana*/
