@@ -24,3 +24,4 @@ class Inicio extends CI_Controller {
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/inicio.php */
+/*projeto Aptana com GIT*/
