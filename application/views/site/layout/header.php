@@ -15,193 +15,20 @@
 
 				<div class="logopanel">
 					<a href=""><img src="<?=SITE_IMG?>/sartana-logo.png" alt="Sartana"></a>
-				</div><!--logopanel-->
+				</div>
 
 				<div class="searchpanel">
 					<form action="results.html" method="post">
 						<input name="keyword" placeholder="Search and hit enter..." type="text">
 					</form>
-				</div><!--searchpanel-->
-
-				<div class="menupanel">
-					<ul class="sf-js-enabled sf-shadow">
-						<li class="current">
-							<a href="index.html"><span class="iconfa-home"></span> Home</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-								<li>
-									<a href="index.html">Home Default</a>
-								</li>
-								<li>
-									<a href="index2.html">Home with FlexSlider</a>
-								</li>
-								<li>
-									<a href="index3.html">Home with Grid Blog</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href=""><span class="iconfa-star"></span> Features</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-								<li>
-									<a href="company.html">About Us</a>
-									<i class="iconfa-angle-right sub-indicator"></i>
-									<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-										<li>
-											<a href="company.html">Our Company</a>
-										</li>
-										<li>
-											<a href="ourteam.html">Our Team</a>
-										</li>
-										<li>
-											<a href="careers.html">Our Careers</a>
-										</li>
-									</ul>
-								</li>
-								<li>
-									<a href="elements.html">Page Elements</a>
-								</li>
-								<li>
-									<a href="support.html">Customer Support</a>
-								</li>
-								<li>
-									<a href="pricing.html">Pricing Table</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="portfolio-4.html"><span class="iconfa-picture"></span> Portfolio</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-								<li>
-									<a href="portfolio-4.html">4 Columns Portfolio</a>
-								</li>
-								<li>
-									<a href="portfolio-3.html">3 Columns Portfolio</a>
-								</li>
-								<li>
-									<a href="portfolio-2.html">2 Columns Portfolio</a>
-								</li>
-								<li>
-									<a href="portfolio-single.html">Single View Portfolio</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="blog.html"><span class="iconfa-file"></span> Blog</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-								<li>
-									<a href="blog.html">Full Image Blog</a>
-								</li>
-								<li>
-									<a href="blog2.html">Small Image Blog</a>
-								</li>
-								<li>
-									<a href="blog3.html">No Sidebar Blog</a>
-								</li>
-								<li>
-									<a href="blog-single.html">Single View Blog</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="contact.html"><span class="iconfa-envelope"></span> Contact Us</a>
-						</li>
-					</ul>
-				</div><!--menupanel-->
-
-				<div class="menupanel2">
-					<ul style="visibility: visible; display: block;" class="sf-js-enabled sf-shadow">
-						<li style="visibility: visible; display: block;" class="current">
-							<a href="index.html"><span class="iconfa-home"></span> Home</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
-								<li style="visibility: visible; display: block;">
-									<a href="index.html">Home Default</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="index2.html">Home with FlexSlider</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="index3.html">Home with Grid Blog</a>
-								</li>
-							</ul>
-						</li>
-						<li style="visibility: visible; display: block;">
-							<a href=""><span class="iconfa-star"></span> Features</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
-								<li style="visibility: visible; display: block;">
-									<a href="company.html">About Us</a>
-									<i class="iconfa-angle-right sub-indicator"></i>
-									<ul class="sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
-										<li style="visibility: visible; display: block;">
-											<a href="company.html">Our Company</a>
-										</li>
-										<li style="visibility: visible; display: block;">
-											<a href="ourteam.html">Our Team</a>
-										</li>
-										<li style="visibility: visible; display: block;">
-											<a href="careers.html">Our Careers</a>
-										</li>
-									</ul>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="elements.html">Page Elements</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="support.html">Customer Support</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="pricing.html">Pricing Table</a>
-								</li>
-							</ul>
-						</li>
-						<li style="visibility: visible; display: block;">
-							<a href="portfolio-4.html"><span class="iconfa-picture"></span> Portfolio</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
-								<li style="visibility: visible; display: block;">
-									<a href="portfolio-4.html">4 Columns Portfolio</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="portfolio-3.html">3 Columns Portfolio</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="portfolio-2.html">2 Columns Portfolio</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="portfolio-single.html">Single View Portfolio</a>
-								</li>
-							</ul>
-						</li>
-						<li style="visibility: visible; display: block;">
-							<a href="blog.html"><span class="iconfa-file"></span> Blog</a>
-							<i class="iconfa-angle-right sub-indicator"></i>
-							<ul class="sf-js-enabled sf-shadow" style="display: block; visibility: visible;">
-								<li style="visibility: visible; display: block;">
-									<a href="blog.html">Full Image Blog</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="blog2.html">Small Image Blog</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="blog3.html">No Sidebar Blog</a>
-								</li>
-								<li style="visibility: visible; display: block;">
-									<a href="blog-single.html">Single View Blog</a>
-								</li>
-							</ul>
-						</li>
-						<li style="visibility: visible; display: block;">
-							<a href="contact.html"><span class="iconfa-envelope"></span> Contact Us</a>
-						</li>
-					</ul>
 				</div>
+
+				<?php $this->load->view('site/layout/menu'); ?>
+
+				
 			</div><!--leftpanel-->
 			<!-- END OF LEFT PANEL -->
+			
 
 			<!--http://demo.themepixels.com/webpage/sartana/index.html-->
 
@@ -211,9 +38,9 @@
 					<div class="headicon">
 						<span class="iconfa-home"></span>
 					</div>
-					<h1 class="longheadtitle">Wazzup humans! Let me introduce my new theme - Sartana</h1>
+					<h1 class="longheadtitle">Portifólio Grupo 2D - Davson Santos</h1>
 					<p>
-						It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change!
+						Conheça aqui todo meu trabalho na área de desenvolcimento web, assessoria em informática entre outros serviços.
 					</p>
 				</div><!--headerpanel-->
 
