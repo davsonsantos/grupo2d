@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = 'admin/login/index';
+$route['default_controller'] = 'site/inicio';
 $route['404_override'] = 'inicio/error404';
 
 // End of file routes.php

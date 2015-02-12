@@ -40,17 +40,18 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',        'x+b');
  * constante de sistema
  */
 define('MODAL_LOAD','<div class="progress progress-striped active"><div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="50" style="width:100%"> Carregando Dados...</div></div>');
-define('SITE_TITULO', 'Centro Social Caminho Seguro'); // define o título das páginas
-define('SITE_SUBTITULO','Compromisso e Responsabilidade');//SUBTITULO DO SITE
+
 
 //CONSTANTES DO SITE
-define('SITE_RAIZ', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/'); // define o título das páginas
-define('SITE_CSS', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/assets/site/css/'); // define o caminho para as paginas de stylo .css
-define('SITE_BOOT', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/assets/site/bootstrap/'); // define o caminho para as paginas de stylo .css
-define('SITE_JS', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/assets/site/scripts/'); // define o caminho para as paginas javascript .js
-define('SITE_IMG', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/assets/site/images/'); // define o caminho para as paginas de images
-define('SITE_FONTE', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/assets/site/fonts/'); // define o caminho para as paginas de stylo .css
-define('SITE_ARQUIVO', 'http://'.$_SERVER['HTTP_HOST'].'/administrador/application/upload/');
+define('SITE_TITULO', 'Portifólio Grupo 2D'); // define o título das páginas
+define('SITE_RODAPE', '<p>&copy 2014/'.date('Y').' | Todos os direitos reservados ao Grupo 2D');
+define('SITE_RAIZ', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/'); // define o título das páginas
+define('SITE_CSS', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/assets/site/css/'); // define o caminho para as paginas de stylo .css
+define('SITE_BOOT', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/assets/site/bootstrap/'); // define o caminho para as paginas de stylo .css
+define('SITE_JS', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/assets/site/js/'); // define o caminho para as paginas javascript .js
+define('SITE_IMG', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/assets/site/images/'); // define o caminho para as paginas de images
+define('SITE_FONTE', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/assets/site/fonts/'); // define o caminho para as paginas de stylo .css
+define('SITE_ARQUIVO', 'http://'.$_SERVER['HTTP_HOST'].'/grupo2d/application/upload/');
 
 
 //CONSTANTES DO ADMINTRATIVO

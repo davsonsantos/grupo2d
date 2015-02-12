@@ -1,0 +1,43 @@
+
+/* background */
+
+.headerpanel .headicon,
+.homepanel .item .itemmeta,
+.blog2 li .bleft .date,
+.share li a:hover,
+.pagerwrapper .share li a:hover,
+.pagerwrapper .paging li a:hover,
+.sidebar .tagcloud li a:hover
+{
+    background-color: #75582e;
+}
+
+/* color */
+a:hover,
+a:focus,
+.menupanel ul li.sfHover > a,
+.menupanel ul li.sfHover a span,
+.menupanel2 ul li.sfHover > a,
+.menupanel2 ul li.sfHover a span,
+.headlist li a:hover,
+.headlist li.current a,
+.breadcrumbs li a:hover,
+.contentpanel ul.list li a:hover,
+.homepanel .itemcontent .inner h3 a,
+.bloglistpanel li .bleft .icon,
+.topicpanel .topic-content p a,
+.sidebar ul li a:hover,
+.sidebar .bloglist li h4 a:hover,
+.menupanel ul li.current > a,
+.menupanel ul li > a:hover,
+.menupanel ul li.sfHover > a,
+.menupanel ul li.current a span,
+.menupanel ul li a:hover span,
+.menupanel ul li.sfHover a span,
+.pricingpanel .business .plan-head h3,
+.pricingpanel .business .plan-head h2
+{
+    color: #75582e;
+}
+
+.itemmeta li, .itemmeta a { color: #fff; }
