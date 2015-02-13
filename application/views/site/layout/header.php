@@ -5,8 +5,24 @@
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<title><?=SITE_TITULO?></title>
 		<link type="text/css" href="<?=SITE_CSS?>style.default.css" rel="stylesheet">
+		
 	</head>
-	<body class="homebody">
+
+<?php
+//valida o bacground da página
+$bg = $this->uri->segment(3);
+switch ($bg) {
+	case 't_contato':
+		$fundo = "bg1";
+		break;
+	
+	default:
+		$fundo = "mainwrapper";
+		break;
+}
+?>	
+	
+	<body class="<?=$fundo?>">
 
 		<div class="mainwrapper">
 

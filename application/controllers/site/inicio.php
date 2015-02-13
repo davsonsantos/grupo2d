@@ -10,6 +10,11 @@ class Inicio extends CI_Controller {
     public function index(){
         $this->load->view('site/index');
     }
+	
+	function t_contato(){
+		$this->load->view('site/contato');
+	}
+	
     function error404() { 
         $this->load->view('site/layout/erro404');
     } 

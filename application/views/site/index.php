@@ -8,27 +8,27 @@
 		</div>
 		<h1 class="longheadtitle">Portifólio Grupo 2D - Davson Santos</h1>
 		<p>
-			Conheça aqui todo meu trabalho na área de desenvolcimento web, assessoria em informática entre outros serviços.
+			Conheça aqui todo meu trabalho na área de desenvolvimento web, assessoria em informática entre outros serviços.
 		</p>
 	</div><!--headerpanel-->
 
 	<div class="contentpanel padding0">
 		<div id="homepanel" class="homepanel">
 			<div class="item animate0 bounceInUp">
-				<div class="img"><img src="<?=SITE_IMG ?>photos/1.png" alt="">
-				</div>
+				<div class="img"><img src="<?=SITE_IMG ?>photos/1.png" alt=""></div>
 				<a href="ajax/gridphoto.php?item=1" class="itemview">
-				<div style="display: none;" class="itemcontent">
-					<div class="inner">
-						<p class="cat">
-							Portrait / Woman
-						</p>
-						<h3>Attractive Woman</h3>
-						<p class="desc">
-							Nor again is there anyone who loves or pursues or desires to obtain pain of itself...
-						</p>
-					</div>
-				</div> </a>
+					<div style="display: none;" class="itemcontent">
+						<div class="inner">
+							<p class="cat">
+								Nome do Projeto
+							</p>
+							<h3>Categoria</h3>
+							<p class="desc">
+								Descrição
+							</p>
+						</div>
+					</div> 
+				</a>
 				<div style="display: none;" class="itemmeta">
 					<ul class="im-inner">
 						<li class="left">
