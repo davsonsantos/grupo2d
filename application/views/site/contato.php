@@ -47,6 +47,9 @@
 		</div>
 		<div class="one_half last contact">
 			<h3 class="sectitle">Contact Form</h3>
+			<p>
+				Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+			</p>
 			<div class="successmsg"></div>
 			<form id="contactform" name="contactform" class="contactform" action="" method="post">
 				<div class="one_half">
