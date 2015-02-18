@@ -4,7 +4,7 @@
 function init_sistema() {
     $CI =& get_instance();
     $CI->load->library(array('sistema', 'session', 'form_validation','pagination'));
-    $CI->load->helper(array('form', 'url', 'array', 'text'));
+    $CI->load->helper(array('form', 'url', 'array', 'text','email'));
 }
 
 

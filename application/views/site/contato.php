@@ -1,7 +1,6 @@
 <?php $this->load->view('site/layout/header'); ?>
 
 
-
 <div class="mainpanel fixedpanel animate5 fadeInLeft">
     <div class="headerpanel">
         <div class="headicon">
@@ -48,7 +47,7 @@
             </div>
         </div>
         <div class="one_half last contact">
-            <h3 class="sectitle">Contact Form</h3>
+            <h3 class="sectitle">Formulário de Contato</h3>
             <p>
                 Envie-nos sugestões, criticas ou elogios, também use essa canal e nos solicite um orçamento que em breve entraremos em contato
             </p>

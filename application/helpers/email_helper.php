@@ -27,7 +27,6 @@ function enviar_email_site($dados) {
     if ($CI->email->send()){
         return true;
     }else{
-        show_error($CI->email->print_debugger());
         return false;
     }
 }

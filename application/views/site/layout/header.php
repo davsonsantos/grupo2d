@@ -5,7 +5,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title><?= SITE_TITULO ?></title>
     <link type="text/css" href="<?= SITE_CSS ?>style.default.css" rel="stylesheet">
-
 </head>
 
                     <?php

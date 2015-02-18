@@ -30,41 +30,41 @@
 <script type="text/javascript" src="<?= SITE_JS ?>custom.js"></script>
 
 <link rel="stylesheet" href="<?= GD_CSS ?>validationEngine.jquery.css">   
-<script src="<?= GD_JS ?>jquery-1.10.2.min.js"></script>
 <script src="<?= GD_JS ?>validation/validate.min.js"></script>
 <script src="<?= GD_JS ?>validation/validationEngine.min.js"></script>       
     <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<script>
-    jQuery(document).ready(function(){
-        jQuery("#contactform").validationEngine();
-    });
-</script> 
+
 
 <script>
-$(document).ready(function(){
-    $('#erro').hide();
-    $('#ok').hide();
-    $('#load').hide();
-    jQuery('#contactform').submit(function(){	
-        if ($("#contactform").validationEngine('validate')) {
-            $('#load').show();
-            var dados = jQuery( this ).serialize();
-            jQuery.ajax({
-                type: "POST",
-                url: "<?= SITE_RAIZ ?>site/inicio/enviar_email",
-                data: dados,
-                success: function(data){
-                    if(data==1){
-                        $('#ok').show();
-                        $('#load').hide();
-                    }else{
-                        $('#erro').show();		//Informa o erro
-                        $('#load').hide();
-                    }
-                } 
-            }) 
-        };
+jQuery(document).ready(function(){
+    jQuery("#contactform").validationEngine();
+    jQuery('#erro').hide();
+    jQuery('#ok').hide();
+    jQuery('#load').hide();
+    jQuery('#enviar').click(function(){
+        jQuery('#contactform').submit(function(){	
+            if (jQuery("#contactform").validationEngine('validate')) {
+                jQuery('#load').show();
+                var dados = jQuery( this ).serialize();
+                jQuery.ajax({
+                    type: "POST",
+                    url: "<?= SITE_RAIZ ?>site/inicio/enviar_email",
+                    data: dados,
+                    success: function(data){
+                        if(data==1){
+                            jQuery('#ok').show();
+                            jQuery('#load').hide();
+                            document.getElementById("contactform").reset();
+                        }else{
+                            jQuery('#erro').show();		//Informa o erro
+                            jQuery('#load').hide();
+                        }
+                    } 
+                }) 
+            };
         return false;
+        });
+        
     });
 })
 </script> 
@@ -72,8 +72,8 @@ $(document).ready(function(){
 
 
 <script type="text/javascript">
+    
     jQuery(document).ready(function () {
-
         var c = 0
         jQuery('#homepanel .item').each(function () {
             jQuery(this).addClass('animate' + c + ' bounceInUp');
@@ -139,10 +139,10 @@ $(document).ready(function(){
 <div class="settings">
     <a class="show"></a>
     <div class="settingsinner">
-        <h4>Style Switcher</h4>
+        <h4>Restrito</h4>
         <div class="predefined">
             <p>
-                Predefined style:
+                Login de Acesso:
             </p>
             <a href="" class="default"><span></span></a>
             <a href="style.blue" class="blue"><span></span></a>
