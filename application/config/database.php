@@ -45,14 +45,14 @@
 | the active record class
 */
 
-if(preg_match('/localhost/',$_SERVER['SERVER_NAME']) || preg_match('/127.0.0.1/',$_SERVER['SERVER_NAME']) || preg_match('/10.229.62.174/', $_SERVER['SERVER_NAME'])){
+if(preg_match('/localhost/',$_SERVER['SERVER_NAME']) || preg_match('/127.0.0.1/',$_SERVER['SERVER_NAME'])){
     $username = 'root';
     $database = 'bd_admin';
-    $password = '';
+    $password = '794613';
 }else{
     $username = 'caminhos_user';
     $database = 'caminhos_banco';
-    $password = '794613794613';
+    $password = 'dav1977';
 }
 
 

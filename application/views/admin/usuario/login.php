@@ -4,8 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <title>Acesso ao Sistema</title>
 <link rel="stylesheet" href="<?= GD_CSS ?>style.css">
-<link rel="stylesheet" href="<?= GD_CSS ?>validationEngine.jquery.css">
-    
+<link rel="stylesheet" href="<?= GD_CSS ?>validationEngine.jquery.css">   
 <script src="<?= GD_JS ?>jquery-1.10.2.min.js"></script>
 <script src="<?= GD_JS ?>validation/validate.min.js"></script>
 <script src="<?= GD_JS ?>validation/validationEngine.min.js"></script>       
