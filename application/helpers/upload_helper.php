@@ -7,16 +7,18 @@
  *  width = comprimento da imagem
  *  heidth = largura da imagem
  *  ratio = manter proporcao true/false
+ *  thumb = criar ou nao um thumbnail
  */
 function upload_imagem($arquivo,$dados){
+	print_r($dados); 
     
     $CI =& get_instance();
     
-    $caminho = ''.$_SERVER['DOCUMENT_ROOT'].'/grupo2d/application/upload/'.$dados['diretorio'].'/';
+    $caminho = ''.$_SERVER['DOCUMENT_ROOT'].'/grupo2d/assets/upload/'.$dados['diretorio'].'/';
     $thumb = $caminho.'thumb/';
     //cria a pasta raiz
     if(is_dir($caminho)){
-        $caminho = ''.$_SERVER['DOCUMENT_ROOT'].'/grupo2d/application/upload/'.$dados['diretorio'].'/';
+        $caminho = ''.$_SERVER['DOCUMENT_ROOT'].'/grupo2d/assets/upload/'.$dados['diretorio'].'/';
     }else{
         mkdir ($caminho, 0777);
     }
@@ -25,7 +27,7 @@ function upload_imagem($arquivo,$dados){
         mkdir ($thumb, 0777);
     }
     $data['caminho'] = $caminho;
-    $data['diretorio'] = directory_map($data['caminho']);
+    $data['diretorio'] = $data['caminho'];
     $file = "".$arquivo."";
     $config['upload_path'] = $caminho;
     $config['allowed_types'] = 'gif|jpg|png';
@@ -44,9 +46,8 @@ function upload_imagem($arquivo,$dados){
         $image = $CI->upload->data();
         $anexo =  $image['raw_name'].$image['file_ext'];
         $dados = array('path'=>$caminho,'img'=>$anexo,'width'=>$dados['w'],'heigth'=>$dados['h'],'ratio'=>$dados['ratio']);
-		if($dados['thumb'] == true){
-        	thumbnail($dados);
-		}
+		thumbnail($dados);
+		
         return $anexo;
     }
 }

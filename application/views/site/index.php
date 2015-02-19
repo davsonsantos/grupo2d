@@ -6,7 +6,7 @@
 		<div class="headicon">
 			<span class="iconfa-home"></span>
 		</div>
-		<h1 class="longheadtitle">Portifólio Grupo 2D - Davson Santos</h1>
+		<h1 class="longheadtitle"><?=$titulo?></h1>
 		<p>
 			Conheça aqui todo meu trabalho na área de desenvolvimento web, assessoria em informática entre outros serviços.
 		</p>

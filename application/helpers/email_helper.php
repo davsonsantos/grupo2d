@@ -13,7 +13,7 @@ function enviar_email_site($dados) {
     $CI->load->library('email');
     $CI->email->set_newline("\r\n");
     $CI->email->from($dados['email'], $dados['nome']);
-    $CI->email->to('Admin@localhost');
+    $CI->email->to('davsonsantos@gmail.com');
     $CI->email->subject($dados['assunto']);
     if($dados['anexo']){
         $CI->email->attach($dados['anexo']);

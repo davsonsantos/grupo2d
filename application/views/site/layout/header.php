@@ -29,7 +29,7 @@
                             <div class="leftpanel">
 
                                 <div class="logopanel">
-                                    <a href=""><img src="<?= SITE_IMG ?>/sartana-logo.png" alt="Sartana"></a>
+                                    <a href=""><img src="<?=SITE_RAIZ?>assets/upload/configuracao/thumb/<?=$logo?>" alt="<?=$titulo?>"></a>
                                 </div>
                                 <!--
                                                                 <div class="searchpanel">

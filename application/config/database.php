@@ -50,8 +50,8 @@ if(preg_match('/localhost/',$_SERVER['SERVER_NAME']) || preg_match('/127.0.0.1/'
     $database = 'bd_admin';
     $password = '794613';
 }else{
-    $username = 'caminhos_user';
-    $database = 'caminhos_banco';
+    $username = 'grupo2d_user';
+    $database = 'grupo2d_site';
     $password = 'dav1977';
 }
 

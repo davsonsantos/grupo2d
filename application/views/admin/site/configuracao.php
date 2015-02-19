@@ -8,20 +8,19 @@
         <h2 class="p-title"><?= $titulo ?></h2>
     </header>
         <div class="c-block" id="required">
-            <!-- <div id="load" class=""><img src="<?= GD_IMG ?>media-player/loading.gif"/></div> -->
-            <div id="msg"></div>
+            <?php echo get_msg('msg') ?>
             <form class="form-validation-1" method="post" name="cad_conf" id="cad_conf" action="<?=GD_RAIZ?>site/upd_configuracao" enctype="multipart/form-data">
                 <div class="c-block" id="basic">
                     <div class="form-group">
                         <label for="titulo">Titulo Site</label> <span class="text-danger">*</span>
-                        <input type="text" class="form-control validate[required]" name="site_titulo" id="site_titulo" placeholder="Titulo do Site" value="<?= @$dados->sis_nome ?>">
+                        <input type="text" class="form-control" name="site_titulo" id="site_titulo" placeholder="Titulo do Site" value="<?=$titulo_site?>">
                     </div>
                 </div>
                 <div class="c-block" id="upload">
 	                <label for="Icon">Logomarca</label> <span class="text-danger">Só informe caso queira mudar</span>   
 	                <div class="fileupload fileupload-new" data-provides="fileupload">
 	                	
-	                    <div class="fileupload-preview thumbnail"></div>
+	                    <div class="fileupload-preview thumbnail"><img src="<?=SITE_RAIZ?>assets/upload/configuracao/thumb/<?=$logo?>" alt="<?=$titulo?>"></div>
 	                    <div>
 	                        <span class="btn btn-file btn-sm btn-gr-gray">
 	                            <span class="fileupload-new">Selecione a Imagem</span>

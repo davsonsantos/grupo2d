@@ -5,10 +5,16 @@ class Inicio extends CI_Controller {
     function __construct() {
         parent::__construct();
         init_sistema();
+		$this->load->model('admin/site/site_model', 'site');
     }
     
     public function index(){
-        $this->load->view('site/index');
+    	$conf = $this->site->dados_conf()->result();
+		$l = explode(".", $conf[0]->site_logo);
+		$logo = $l[0]."_thumb.".$l[1];
+    	$data = array('titulo'=>$conf[0]->site_titulo,
+					  'logo'=>$logo);
+        $this->load->view('site/index',$data);
     }
 	
     function t_contato(){
