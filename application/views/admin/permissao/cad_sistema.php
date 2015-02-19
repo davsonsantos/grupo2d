@@ -29,6 +29,18 @@
                 
                 <div class="c-block" id="basic">
                     <div class="form-group">
+                        <label for="Icon">Icon</label> <span class="text-danger">*</span>                        
+                        <select class="select" name="sis_icon" id="sis_icon">
+                        	<option value="">Selecione um Ícone</option>
+	                        <?php foreach ($icon as $i) { ?>
+	                          <option <?php if($i->icon_nome == $dados->sis_icon) echo "selected"; ?> value="<?=trim($i->icon_nome)?>" data-icon="<?=trim($i->icon_nome)?>"> <?=$i->icon_nome?></option>    
+	                        <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="c-block" id="basic">
+                    <div class="form-group">
                         <label for="Status">Status</label> <span class="text-danger">*</span>
                         <div id="check" class="c-block">
                             <div class="radio">

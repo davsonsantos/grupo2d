@@ -33,7 +33,7 @@ function excluir_sistema(id) {
                 <?php foreach ($lista as $l) { ?>
                     <tr class="gradeX">
                         <td class="center"><?= $l->sis_id ?></td>
-                        <td><?= $l->sis_nome ?></td>
+                        <td><span class="<?= $l->sis_icon ?>"></span> <?= $l->sis_nome ?></td>
                         <td><?= $l->sis_descricao ?></td>
                         <td><?= $l->sis_ativo ?></td>
                         <td class="center">       

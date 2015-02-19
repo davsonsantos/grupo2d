@@ -17,7 +17,7 @@ class Permissao_model extends CI_Model {
     /*bloco de sistema*/
     
     function get_sistema(){
-        $sql = "SELECT sis_id, sis_nome, sis_descricao,
+        $sql = "SELECT sis_id, sis_nome, sis_descricao, sis_icon,
                     CASE sis_ativo WHEN 'S' THEN 'Ativo'
                                    WHEN 'N' THEN 'Inativo'
                     ELSE 'Sstatus Indefinido' END AS sis_ativo      
@@ -26,8 +26,18 @@ class Permissao_model extends CI_Model {
         return $this->db->query($sql);
     }
     
+	public function get_byIcon(){
+        $sql = "select * from tb_icon order by icon_nome";
+        return $this->db->query($sql);
+    }
+    
     public function get_byIdsistema($id=NULL){
         $sql = "select * from tb_sistema where sis_id=".$id;
+        return $this->db->query($sql);
+    }
+    
+    public function get_byNomesistema($nome=NULL){
+        $sql = "select * from tb_sistema where sis_nome='".$nome."'";
         return $this->db->query($sql);
     }
     
@@ -44,7 +54,8 @@ class Permissao_model extends CI_Model {
     
     public function editar_sistema($dados){ 
         $sql = "update tb_sistema set sis_nome = '".$dados['sis_nome']."', sis_descricao = '".$dados['sis_descricao']."',
-                                      sis_ativo = '".$dados['sis_ativo']."' where sis_id = ".$dados['sis_id'];
+                                      sis_ativo = '".$dados['sis_ativo']."', sis_icon = '".$dados['sis_icon']."' 
+                                      where sis_id = ".$dados['sis_id'];
         if ($this->db->query($sql)){
             return true;
         }else{

@@ -27,7 +27,8 @@ class Permissao extends CI_Controller {
                     'acao'=>$acao,
                     'botao'=>'Cadastrar',
                     'cor'=>'success',
-                    'dados'=>'');
+                    'dados'=>'',
+					'icon'=>$this->permissao->get_byIcon()->result());
                 
                 break;
             case 'editar':
@@ -36,7 +37,8 @@ class Permissao extends CI_Controller {
                             'botao'=>'Editar',
                             'cor'=>'warning',
                             'id'=>$this->input->get('id'),
-                            'dados'=>$this->permissao->get_byIdsistema($this->input->get('id'))->row());
+                            'dados'=>$this->permissao->get_byIdsistema($this->input->get('id'))->row(),
+							'icon'=>$this->permissao->get_byIcon()->result());
                 break;
             default:
                 
@@ -50,14 +52,16 @@ class Permissao extends CI_Controller {
         switch ($acao) {
             case 'novo':
                 $dados = array('sis_nome'=>  $this->input->post('sis_nome'),
-                              'sis_descricao'=>$this->input->post('sis_descricao'),
-                              'sis_ativo'=>$this->input->post('sis_ativo'));
+                               'sis_descricao'=>$this->input->post('sis_descricao'),
+                               'sis_ativo'=>$this->input->post('sis_ativo'),
+							   'sis_icon'=>$this->input->post('sis_icon'));
                 $sucesso = $this->permissao->inserir_sistema($dados);
                 break;
             case 'editar':
                 $dados = array('sis_nome'=>  $this->input->post('sis_nome'),
                                'sis_descricao'=>$this->input->post('sis_descricao'),
                                'sis_ativo'=>$this->input->post('sis_ativo'),
+                               'sis_icon'=>$this->input->post('sis_icon'),
                                'sis_id'=>$this->input->post('id'));
                 $sucesso = $this->permissao->editar_sistema($dados);
                 break;

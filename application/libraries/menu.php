@@ -5,14 +5,9 @@ class Menu {
     public $tipo;
 
     function icon($tipo) {
-
-        switch ($tipo) {
-            case 'inicio': $icon = 'dashboard';
-                break;
-            case 'Sair do Sistema': $icon = 'sign-out';
-                break;
-        }
-        return($icon);
+    	$obj = & get_instance();
+		$icon = $obj->permissao->get_byNomesistema($tipo)->result();
+        return($icon[0]->sis_icon);
     }
 
     public function show_menu() {
@@ -32,7 +27,8 @@ class Menu {
 
         $obj->load->model('admin/seguranca/permissao_model', 'permissao', TRUE);
         $permissao = $obj->permissao->permissao_sistema();
-         $i = 0;
+		
+        $i = 0;
         foreach ($permissao as $row) {
             $item = explode(' - ', $row->mod_descricao);
             $input[$i] = $item[0];
@@ -40,11 +36,12 @@ class Menu {
                 $mnu[$i] = $item[1];
             $i = $i + 1;
         }
+		
         $topico = array_keys(array_flip($input));
 
         foreach ($topico as $row) {
              $j = 0;
-            $menu .= '<li class="submenu"><a href="#"><i class="icon-stack"></i>'. $row.'</a>';
+            $menu .= '<li class="submenu"><a href="#"><i class="'.$this->icon($row).'"></i>'. $row.'</a>';
             $menu .= '<ul>';
             foreach ($permissao as $l) {
          
