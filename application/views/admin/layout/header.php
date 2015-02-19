@@ -68,7 +68,7 @@
             <aside id="leftbar" class="pull-left">
                 <div class="sidebar-container">
                     <?php #$this->load->view('layout/menu'); ?>
-                    <?
+                    <?php
 
                     $this->load->library('Menu');
                     $menu = new Menu;

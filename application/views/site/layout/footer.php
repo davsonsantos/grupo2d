@@ -144,7 +144,7 @@ jQuery(document).ready(function(){
             <p>
                 Login de Acesso:
             </p>
-            <a href="" class="default"><span></span></a>
+<!--            <a href="" class="default"><span></span></a>
             <a href="style.blue" class="blue"><span></span></a>
             <a href="style.brown" class="brown"><span></span></a>
             <a href="style.green" class="green"><span></span></a>
@@ -153,7 +153,12 @@ jQuery(document).ready(function(){
             <a href="style.magenta" class="magenta"><span></span></a>
             <a href="style.navyblue" class="navyblue"><span></span></a>
             <a href="style.purple" class="purple"><span></span></a>
-            <a href="style.red" class="red"><span></span></a>
+            <a href="style.red" class="red"><span></span></a>-->
+            <form action="" id="form_login" name="form_login" class="login" method="post">
+                <input type="text" class="form-control" style="width: 100%" placeholder="Login" name="usuario">
+                <input type="password" class="form-control" style="width: 100%" placeholder="Senha" name="senha">
+                <button type="submit" class="btn btn-default">Login</button>
+            </form>
         </div>
     </div><!--settingsinner-->
 </div><!--settings-->
@@ -163,7 +168,26 @@ jQuery(document).ready(function(){
 </div>
 
 
-
+<script>
+jQuery(document).ready(function(){
+    jQuery('#form_login').submit(function(){	
+        if (jQuery("#form_login").validationEngine('validate')) {
+            var dados = jQuery( this ).serialize();
+            jQuery.ajax({
+                type: "POST",
+                url: "<?= GD_RAIZ ?>login/logar",
+                data: dados,
+                success: function(data){
+                    if(data==1){
+                        location.href='<?= GD_RAIZ ?>inicio/index'	//Redireciona
+                    }
+                } 
+            }) 
+        };
+        return false;
+    });
+})
+</script> 
 
 </body>
 </html> 
