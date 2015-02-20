@@ -4,8 +4,8 @@ $this->load->view('admin/layout/header');
 <script src="<?= GD_JS ?>jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= GD_CSS ?>dataTables.bootstrap.css">
 <script>
-function excluir_modulo(id) {
-    var url="<?=GD_RAIZ?>permissao/excluir_modulo?acao=excluir&id="+id;
+function excluir_projeto(id) {
+    var url="<?=GD_RAIZ?>site/confirmar_projeto?acao=excluir&id="+id;
     window.location.href=url;
 }  
 </script>
@@ -35,9 +35,9 @@ function excluir_modulo(id) {
                         <td class="center"><?= $l->por_id ?></td>
                         <td><?= $l->por_nome ?></td>
                         <td><?= $l->cat_projeto_descricao?></td>
-                        <td><?= $l->por_link ?></td>
+                        <td><a href="<?= $l->por_link ?>" target="_blank"><?= $l->por_link ?></a></td>
                         <td class="center">
-                        <a href="<?=GD_RAIZ?>permissao/cadastro_modulo?acao=<?=base64_encode("editar")?>&id=<?= $l->por_id ?>" class="ttips" title="" data-placement="top" data-toggle="tooltip" data-original-title="Editar Registro"><span class="icon-pencil-2" aria-hidden="true"></span></a>
+                        <a href="<?=GD_RAIZ?>site/cadastro_projeto?acao=<?=base64_encode("editar")?>&id=<?= $l->por_id ?>" class="ttips" title="" data-placement="top" data-toggle="tooltip" data-original-title="Editar Registro"><span class="icon-pencil-2" aria-hidden="true"></span></a>
                             &nbsp;
                             <a class="ttips" href="#<?= $l->por_id ?>" data-toggle="modal" data-original-title="Excluir Registro"><span class="icon-remove-2 " aria-hidden="true"></span></a>
    
@@ -53,7 +53,7 @@ function excluir_modulo(id) {
                                             <h5><?= $l->por_nome ?></h5>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-sm btn-danger" type="button" onClick="excluir_modulo(<?= $l->por_id ?>)">Excluir</button>
+                                            <button class="btn btn-sm btn-danger" type="button" onClick="excluir_projeto(<?= $l->por_id ?>)">Excluir</button>
                                             <button data-dismiss="modal" class="btn btn-sm btn-warning" type="button">Cancelar</button>
                                         </div>
                                     </div>

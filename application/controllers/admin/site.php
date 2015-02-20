@@ -47,7 +47,7 @@ class Site extends CI_Controller {
 	public function portifolio(){
         $data = array(
             'titulo'=>'Lista de Projetos Realizados',
-            'lista'=>$this->site->get_projetos()->result()
+            'lista'=>$this->site->get_projetos(FALSE)->result()
         );
         $this->load->view('admin/site/lista_portifolio',$data);
     }
@@ -66,13 +66,13 @@ class Site extends CI_Controller {
                 
                 break;
             case 'editar':
-                $data = array('titulo'=>'Editar Sistema',
+                $data = array('titulo'=>'Editar Projeto',
                             'acao'=>$acao,
                             'botao'=>'Editar',
                             'cor'=>'warning',
                             'id'=>$this->input->get('id'),
-                            'dados'=>$this->permissao->get_byIdsistema($this->input->get('id'))->row(),
-							'icon'=>$this->permissao->get_byIcon()->result());
+                            'categoria'=>$this->site->get_categoria()->result(),
+                            'dados'=>$this->site->get_byIdprojeto($this->input->get('id'))->row());
                 break;
             default:
                 
@@ -83,6 +83,7 @@ class Site extends CI_Controller {
 
 	function confirmar_projeto(){
         $acao = $this->input->get_post('acao');
+		
         switch ($acao) {
             case 'novo':
 				$config_img = array('diretorio'=>'portifolio','w'=>370,'h'=>240,'ratio'=>FALSE);
@@ -99,27 +100,127 @@ class Site extends CI_Controller {
 		        }else{
 		            set_msg('msg', 'Erro ao Cadastrar os dados', 'erro');
 		        }
-				redirect(GD_RAIZ.'site/portifolio');
                 break;
             case 'editar':
-                $dados = array('sis_nome'=>  $this->input->post('sis_nome'),
-                               'sis_descricao'=>$this->input->post('sis_descricao'),
-                               'sis_ativo'=>$this->input->post('sis_ativo'),
-                               'sis_icon'=>$this->input->post('sis_icon'),
-                               'sis_id'=>$this->input->post('id'));
-                $sucesso = $this->permissao->editar_sistema($dados);
+				$config_img = array('diretorio'=>'portifolio','w'=>370,'h'=>240,'ratio'=>FALSE);
+		        $anexo = upload_imagem('logo',$config_img);
+				if(!$anexo){
+					$anexo = $this->input->post('img');
+				}
+                $dados = array('por_nome'=>  $this->input->post('por_nome'),
+                               'por_descricao'=>$this->input->post('por_descricao'),
+                               'por_img'=>$anexo,
+							   'por_link'=>$this->input->post('por_link'),
+							   'cat_projeto_id'=>$this->input->post('id'));
+                $sucesso = $this->site->editar_projeto($dados);
+				if ($sucesso){
+		            set_msg('msg', 'Dados Editados com sucesso', 'sucesso');
+		        }else{
+		            set_msg('msg', 'Erro ao Editar os dados', 'erro');
+		        }
+                break;
+			case 'excluir':
+				$dados = array('por_id'=>$this->input->get('id'));
+        		$sucesso = $this->site->exc_projeto($dados);
+				if ($sucesso){
+		            set_msg('msg', 'Exclusão efetuada com sucesso', 'sucesso');
+		        }else{
+		            set_msg('msg', 'Erro ao efetuar a exclusão', 'erro');
+		        }
+            default:
+                
+                break;       
+        }
+		redirect(GD_RAIZ.'site/portifolio');
+        
+    }
+
+	public function parceiros(){
+        $data = array(
+            'titulo'=>'Lista de Parceiros',
+            'lista'=>$this->site->get_parceiros()->result()
+        );
+        $this->load->view('admin/site/lista_parceiros',$data);
+    }
+
+	function cadastro_parceiro(){
+        $acao = base64_decode($this->input->get('acao'));
+        switch ($acao) {
+            case 'novo':
+                $data = array('titulo'=>'Novo Parceiro',
+                    'acao'=>$acao,
+                    'botao'=>'Cadastrar',
+                    'cor'=>'success',
+                    'dados'=>''
+					);
+                
+                break;
+            case 'editar':
+                $data = array('titulo'=>'Editar Parceiro',
+                            'acao'=>$acao,
+                            'botao'=>'Editar',
+                            'cor'=>'warning',
+                            'id'=>$this->input->get('id'),
+                            'dados'=>$this->site->get_byIdparceiro($this->input->get('id'))->row());
                 break;
             default:
                 
                 break;       
         }
-        if($sucesso){
-            echo 1;
-        }else{
-            echo 0;
-        }
+        $this->load->view('admin/site/cad_parceiro',$data);
     }
-    
+
+	function confirmar_parceiro(){
+        $acao = $this->input->get_post('acao');
+		
+        switch ($acao) {
+            case 'novo':
+				$config_img = array('diretorio'=>'parceiro','w'=>370,'h'=>240,'ratio'=>FALSE);
+		        $anexo = upload_imagem('logo',$config_img);
+                $dados = array('par_nome'=>  $this->input->post('par_nome'),
+                               'par_descricao'=>$this->input->post('par_descricao'),
+                               'par_img'=>$anexo,
+							   );
+							   
+                $sucesso = $this->site->inserir_parceiro($dados);
+				if ($sucesso){
+		            set_msg('msg', 'Dados Inseridos com sucesso', 'sucesso');
+		        }else{
+		            set_msg('msg', 'Erro ao Cadastrar os dados', 'erro');
+		        }
+                break;
+            case 'editar':
+				$config_img = array('diretorio'=>'parceiro','w'=>370,'h'=>240,'ratio'=>FALSE);
+		        $anexo = upload_imagem('logo',$config_img);
+				if(is_array($anexo)){
+					$anexo = $this->input->post('img');
+				}
+                $dados = array('par_nome'=>  $this->input->post('par_nome'),
+                               'par_descricao'=>$this->input->post('par_descricao'),
+                               'par_img'=>$anexo,
+							   'par_id'=>$this->input->post('id'));
+                $sucesso = $this->site->editar_parceiro($dados);
+				if ($sucesso){
+		            set_msg('msg', 'Dados Editados com sucesso', 'sucesso');
+		        }else{
+		            set_msg('msg', 'Erro ao Editar os dados', 'erro');
+		        }
+                break;
+			case 'excluir':
+				$dados = array('par_id'=>$this->input->get('id'));
+        		$sucesso = $this->site->exc_parceiro($dados);
+				if ($sucesso){
+		            set_msg('msg', 'Exclusão efetuada com sucesso', 'sucesso');
+		        }else{
+		            set_msg('msg', 'Erro ao efetuar a exclusão', 'erro');
+		        }
+            default:
+                
+                break;       
+        }
+		redirect(GD_RAIZ.'site/parceiros');
+        
+    }
     
    
         

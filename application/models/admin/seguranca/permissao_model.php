@@ -6,7 +6,7 @@ class Permissao_model extends CI_Model {
         $query = $this->db->query("SELECT * FROM tb_modulo m
                                     INNER JOIN tb_permissao p ON p.mod_id = m.mod_id
                                     WHERE m.mod_ativo = 'S'
-                                    AND p.usu_id = ".$this->session->userdata('user_id')." ORDER BY m.mod_descricao ASC");	
+                                    AND p.usu_id = ".$this->session->userdata('user_id')." ORDER BY m.mod_id ASC");	
         if($query->num_rows() > 0) {
             return $query->result();
         } else {

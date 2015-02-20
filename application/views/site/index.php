@@ -14,24 +14,32 @@
 
 	<div class="contentpanel padding0">
 		<div id="homepanel" class="homepanel">
+			
+			<?php 
+			  for ($i=0; count($projetos) > $i; $i++) {
+			  $l = explode(".", $projetos[$i]->por_img);
+		      $img = $l[0]."_thumb.".$l[1]; 
+			?>
 			<div class="item animate0 bounceInUp">
-				<div class="img"><img src="<?=SITE_IMG ?>photos/1.png" alt=""></div>
-				<a href="ajax/gridphoto.php?item=1" class="itemview">
+				<div class="img">
+					<img src="<?=SITE_RAIZ?>assets/upload/portifolio/thumb/<?=$img?>" alt="">
+				</div>
+				<a href="<?=SITE_RAIZ?>site/inicio/detalhe?item=<?=$projetos[$i]->por_id?>" class="itemview">
 					<div style="display: none;" class="itemcontent">
 						<div class="inner">
 							<p class="cat">
-								Nome do Projeto
+								<?=$projetos[$i]->cat_projeto_descricao?>
 							</p>
-							<h3>Categoria</h3>
+							<h3><?=$projetos[$i]->por_nome?>	</h3>
 							<p class="desc">
-								Descrição
+								<?=$projetos[$i]->por_descricao?>
 							</p>
 						</div>
 					</div> 
 				</a>
 				<div style="display: none;" class="itemmeta">
 					<ul class="im-inner">
-						<li class="left">
+						<!-- <li class="left">
 							<i class="iconfa-eye-open"></i> 1,000
 						</li>
 						<li class="left">
@@ -45,10 +53,12 @@
 						</li>
 						<li>
 							<a href="" data-rel="tooltip" data-original-title="Share"><i class="iconfa-google-plus"></i></a>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>
+			<?php } ?>
+			
 		</div>
 	</div>
 </div><!--mainpanel-->
