@@ -14,7 +14,6 @@ class Inicio extends CI_Controller {
 		$l = explode(".", $conf[0]->site_logo);
 		$logo = $l[0]."_thumb.".$l[1];
 		
-		
     	$data = array('titulo'=>$conf[0]->site_titulo,
 					  'logo'=>$logo,
 					  'projetos' => $this->site->get_projetos(TRUE)->result()

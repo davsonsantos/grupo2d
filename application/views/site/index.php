@@ -22,7 +22,7 @@
 			?>
 			<div class="item animate0 bounceInUp">
 				<div class="img">
-					<img src="<?=SITE_RAIZ?>assets/upload/portifolio/thumb/<?=$img?>" alt="">
+					<img src="<?=SITE_RAIZ?>assets/upload/portifolio/thumb/<?=$logo?>" alt="">
 				</div>
 				<a href="<?=SITE_RAIZ?>site/inicio/detalhe?item=<?=$projetos[$i]->por_id?>" class="itemview">
 					<div style="display: none;" class="itemcontent">

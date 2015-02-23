@@ -78,6 +78,19 @@ function is_admin($set_msg=FALSE){
     endif;
 }
 
+
+//carrega a logomarca do site
+function logo_site(){
+	$CI =& get_instance();
+	$CI->load->model('admin/site/site_model', 'site');
+	$conf = $CI->site->dados_conf()->result();
+	$l = explode(".", $conf[0]->site_logo);
+
+	$dados = array("logo" => $l[0]."_thumb.".$l[1],"titulo" => $conf[0]->site_titulo);
+	return $dados;
+}
+
+
 //gera um breadcrumb com base no controller atual
 function breadcrumb() {
    $CI =& get_instance();
@@ -246,36 +259,3 @@ function mes_extenso($referencia = NULL){
     return $mes;
 }
 
-// function thumbnail($img){
-//     
-    // $CI =& get_instance();
-    // $config['image_library'] = 'gd2';
-    // $config['source_image'] = $img;
-    // $config['create_thumb'] = TRUE;
-    // $config['maintain_ratio'] = TRUE;
-    // $config['width'] = 75;
-    // $config['height'] = 50;
-// 
-    // $CI->load->library('image_lib', $config);
-    // $image = $CI->image_lib->resize();
-    // echo $image;
-//     
-// }
-
-// function resize_image($file_path) {
-    // $CI =& get_instance();
-    // $CI->load->library('image_lib');
-// 
-    // $img_cfg['image_library'] = 'gd2';
-    // $img_cfg['source_image'] = $file_path;
-    // $img_cfg['maintain_ratio'] = TRUE;
-    // $config['create_thumb'] = TRUE;
-    // $img_cfg['new_image'] = $file_path;
-    // $img_cfg['width'] = 50;
-    // $img_cfg['quality'] = 100;
-    // $img_cfg['height'] = 50;
-// 
-    // $CI->image_lib->initialize($img_cfg);
-    // echo $CI->image_lib->resize();
-// 
-// }
