@@ -122,6 +122,57 @@ class Permissao_model extends CI_Model {
             
             if ($redir) redirect(GD_RAIZ.'permissao/modulo');
     }
+	/*fim do bloco de modulos*/
+	
+	/*bloco de usuarios*/
+	function get_usuarios(){
+        $sql = "SELECT * FROM tb_usuarios";
+        return $this->db->query($sql);
+    }
+	
+	public function inserir_usuario($dados=NULL){
+        if ($dados != NULL):
+            $this->db->insert('tb_usuarios', $dados);
+            if ($this->db->affected_rows()>0):
+               return true;
+            else:
+                return false;
+            endif;
+        endif;
+    }
+	
+	public function get_byIdusuario($id=NULL){
+        $sql = "select * from tb_usuarios where usu_id=".$id;
+        return $this->db->query($sql);
+    }
     
+	public function editar_usuario($dados){ 
+        $sql = "update tb_usuarios set usu_nome = '".$dados['usu_nome']."', usu_login = '".$dados['usu_login']."',
+                                      usu_ativo = ".$dados['usu_ativo']." where usu_id = ".$dados['usu_id'];
+        if ($this->db->query($sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+	
+	public function exc_usuario($dados,$redir=true){ 
+        $sql = "delete from tb_usuarios where usu_id = ".$dados['usu_id'];
+
+        if ($this->db->query($sql)){
+            set_msg('msg', 'Exclusão efetuada com sucesso', 'sucesso');
+        }else{
+            set_msg('msg', 'Erro ao efetuar a exclusão', 'erro');
+        }
+            
+            if ($redir) redirect(GD_RAIZ.'permissao/usuario');
+    }
+	/*fim do modulo de usuarios*/
+	
+	/*modulo de permissoes*/
+	function lista_programas(){
+		$sql = "select * from tb_modulo where mod_id not in (select mod_id from tb_permissao)";
+		return $this->db->query($sql);
+	}
     
 }

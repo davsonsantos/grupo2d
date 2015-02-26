@@ -63,6 +63,7 @@ class Menu {
         $menu .= '<ul>';
             $menu .= ' <li><a href="'.GD_RAIZ.'permissao/sistema">Cadastrar Sistemas</a></li>';
             $menu .= ' <li><a href="'.GD_RAIZ.'permissao/modulo">Cadastrar Módulos</a></li>';
+			$menu .= ' <li><a href="'.GD_RAIZ.'permissao/usuarios">Cadastrar Usuários</a></li>';
         $menu .= '</ul>';
         $menu .= '</li>';
         $menu .= '<li class="">'.anchor(GD_RAIZ.'login/logoff','<i class="icon-exit"></i><span class="mm-text">Sair do Sistema</span>','').'</li>';

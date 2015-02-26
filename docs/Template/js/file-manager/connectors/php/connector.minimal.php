@@ -33,7 +33,7 @@ $opts = array(
 	// 'debug' => true,
 	'roots' => array(
 		array(
-			'driver'        => 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);,   // driver for accessing file system (REQUIRED)
+			'driver'        => 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']),   // driver for accessing file system (REQUIRED)
 			'path'          => '../../files/',         // path to files (REQUIRED)
 			'URL'           => dirname($_SERVER['PHP_SELF']) . '/../files/', // URL to files (REQUIRED)
 			'accessControl' => 'access'             // disable and hide dot starting files (OPTIONAL)

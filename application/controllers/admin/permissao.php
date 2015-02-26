@@ -150,6 +150,86 @@ class Permissao extends CI_Controller {
         $this->permissao->exc_modulo($dados);
     }
     
+	/*fim do bloco de modulos*/
+	
+	/*bloco de usuarios*/
+	public function usuarios(){
+        $data = array(
+            'titulo'=>'Lista de Usuários',
+            'lista'=>$this->permissao->get_usuarios()->result()
+        );
+        $this->load->view('admin/permissao/lista_usuarios',$data);
+    }
+	
+	function cadastro_usuario(){
+        $acao = base64_decode($this->input->get('acao'));
+        switch ($acao) {
+            case 'novo':
+                $data = array('titulo'=>'Novo Usuário',
+                    'acao'=>$acao,
+                    'botao'=>'Cadastrar',
+                    'cor'=>'success');
+                break;
+            case 'editar':
+                $data = array('titulo'=>'Editar Usuários',
+                            'acao'=>$acao,
+                            'botao'=>'Editar',
+                            'cor'=>'warning',
+                            'id'=>$this->input->get('id'),
+                            'dados'=>$this->permissao->get_byIdusuario($this->input->get('id'))->row());
+                break;
+            default:
+                
+                break;       
+        }
+        $this->load->view('admin/permissao/cad_usuario',$data);
+    }
+	
+	function confirmar_usuario(){
+        $acao = $this->input->get_post('acao');
+        switch ($acao) {
+            case 'novo':
+                $dados = array('usu_nome'=>  $this->input->post('usu_nome'),
+                               'usu_login'=>$this->input->post('usu_login'),
+                               'usu_senha'=>md5($this->input->post('usu_senha')),
+                               'usu_email'=>$this->input->post('usu_email'),
+                               'usu_ativo'=>$this->input->post('usu_ativo'));
+                $sucesso = $this->permissao->inserir_usuario($dados);
+                break;
+            case 'editar':
+                $dados = array('usu_nome'=>  $this->input->post('usu_nome'),
+                               'usu_login'=>$this->input->post('usu_login'),
+                               'usu_email'=>$this->input->post('usu_email'),
+                               'usu_ativo'=>$this->input->post('usu_ativo'),
+                               'usu_id'=>$this->input->post('id'));
+                $sucesso = $this->permissao->editar_usuario($dados);
+                break;
+            default:
+                
+                break;       
+        }
+        if($sucesso){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+	
+	function excluir_usuario(){
+        $dados = array('usu_id'=>$this->input->get('id'));
+        $this->permissao->exc_usuario($dados);
+    }
+	
+	function permissao_usuario(){
+		$id = base64_decode($this->input->get('id'));
+		$data = array('titulo'=>'Permissões de Acesso',
+                                'botao'=>'Confirmar',
+                                'cor'=>'info',
+                                'id'=>$this->input->get('id'),
+                                'lista'=>$this->permissao->lista_programas()->result());
+		$this->load->view('admin/permissao/permissoes_acesso',$data);								
+	}
+    
    
         
 }
