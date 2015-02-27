@@ -12,6 +12,7 @@ class Permissao extends CI_Controller {
     
 /*bloco de sistemas*/    
     public function sistema(){
+    	tem_acesso();
         $data = array(
             'titulo'=>'Lista de Sistemas',
             'lista'=>$this->permissao->get_sistema()->result()
@@ -224,10 +225,60 @@ class Permissao extends CI_Controller {
 		$id = base64_decode($this->input->get('id'));
 		$data = array('titulo'=>'Permissões de Acesso',
                                 'botao'=>'Confirmar',
-                                'cor'=>'info',
-                                'id'=>$this->input->get('id'),
-                                'lista'=>$this->permissao->lista_programas()->result());
+                                'cor'=>'success',
+                                'id'=>$id,
+                                'lista'=>$this->permissao->lista_modulos_permissao($id)->result());
 		$this->load->view('admin/permissao/permissoes_acesso',$data);								
+	}
+
+	function confirmar_permissao(){
+		$sucesso = 0;
+		$erro = 0;
+		for ($i=0; $i < count($_POST['opcao']); $i++) { 
+			if($this->permissao->cad_permissao($_POST['opcao'][$i],$_POST['id'])){
+				$sucesso++;
+			}else{
+				$erro++;
+			}
+		}
+	
+		if($erro > 0 and $sucesso > 0){
+			echo 1;
+		}elseif($erro > 0 and $sucesso == 0){
+			echo 2;
+		}elseif($erro == 0 and $sucesso > 0){
+			echo 3;
+		}
+	}
+
+	public function remove_permisao(){
+        $id = base64_decode($this->input->get('id'));
+		$data = array('titulo'=>'Permissões do Usuário',
+                                'botao'=>'Remover Acesso',
+                                'cor'=>'warning',
+                                'id'=>$id,
+                                'lista'=>$this->permissao->lista_usuario_permissao($id)->result());
+        $this->load->view('admin/permissao/remover_permissao',$data);
+    }
+	
+	function confirmar_remover_acesso(){
+		$sucesso = 0;
+		$erro = 0;
+		for ($i=0; $i < count($_POST['opcao']); $i++) { 
+			if($this->permissao->remove_acesso($_POST['opcao'][$i],$_POST['id'])){
+				$sucesso++;
+			}else{
+				$erro++;
+			}
+		}
+	
+		if($erro > 0 and $sucesso > 0){
+			echo 1;
+		}elseif($erro > 0 and $sucesso == 0){
+			echo 2;
+		}elseif($erro == 0 and $sucesso > 0){
+			echo 3;
+		}
 	}
     
    

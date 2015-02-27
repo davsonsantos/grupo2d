@@ -13,8 +13,14 @@ $this->load->view('admin/layout/header');
         </div>
     </div>
 
+	<div class="row m-container">
+		
+    	<div class="col-md-12 simple-list masonry">	
+    			<?php echo get_msg('msgerro') ?>
+    	</div>
+	</div>
+	
     <div class="row m-container">
-
         <!-- About me -->
         <div class="col-md-6 simple-list masonry">	      
             <div class="block">          
@@ -62,7 +68,6 @@ $this->load->view('admin/layout/header');
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
 

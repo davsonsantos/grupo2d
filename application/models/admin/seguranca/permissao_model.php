@@ -170,9 +170,24 @@ class Permissao_model extends CI_Model {
 	/*fim do modulo de usuarios*/
 	
 	/*modulo de permissoes*/
-	function lista_programas(){
-		$sql = "select * from tb_modulo where mod_id not in (select mod_id from tb_permissao)";
+	function lista_modulos_permissao($id){
+		$sql = "select * from tb_modulo where mod_id not in (select mod_id from tb_permissao WHERE usu_id = ".$id.")";
+		return $this->db->query($sql);
+	}
+
+	function cad_permissao($item,$id){
+		$sql = "insert into tb_permissao(usu_id,mod_id,excluir,editar,inserir,visualizar)
+		        values(".$id.",".$item.",1,1,1,1)";
+		return $this->db->query($sql);
+	}
+	
+	function lista_usuario_permissao($id){
+		$sql = "select * from tb_modulo where mod_id in (select mod_id from tb_permissao WHERE usu_id = ".$id.")";
 		return $this->db->query($sql);
 	}
     
+    function remove_acesso($item,$id){
+    	$sql = "delete from tb_permissao where usu_id = ".$id." and mod_id = ".$item." ";
+		return $this->db->query($sql);
+    }
 }

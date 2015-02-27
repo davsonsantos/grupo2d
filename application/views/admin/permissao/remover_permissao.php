@@ -28,7 +28,7 @@ function marcardesmarcar(){
     <div id="msg"></div>
     <div class="table-responsive">
         <div class="c-block" id="required">
-            <form class="form-validation-1" method="post" name="per_usuario" id="per_usuario" action="">
+            <form class="form-validation-1" method="post" name="racesso" id="racesso" action="">
                 <input type="hidden" name="id" value="<?= $id ?>">
                 <div class="table-responsive">
 			        <table class="table table-bordered table-striped" id="example">
@@ -37,7 +37,7 @@ function marcardesmarcar(){
 			                    <th>ID</th>
 			                    <th>Acesso</th>
 			                    <th class="text-center">
-			                    	<button class='btn btn-xs btn-info' type='button' id='todos' onclick='marcardesmarcar();'><span class="icon-plus"></span></button>
+			                    	<button class='btn btn-xs btn-danger' type='button' id='todos' onclick='marcardesmarcar();'><span class="icon-minus"></span></button>
 			                    </th>
 			                </tr>
 			            </thead>
@@ -77,24 +77,24 @@ function marcardesmarcar(){
 $(document).ready(function(){
     $('#errolog').hide();
     $('#load').hide();
-    jQuery('#per_usuario').submit(function(){	
-        if ($("#per_usuario").validationEngine('validate')) {
+    jQuery('#racesso').submit(function(){	
+        if ($("#racesso").validationEngine('validate')) {
             $('#load').show();
             var dados = jQuery( this ).serialize();
             jQuery.ajax({
                 type: "POST",
-                url: "<?=GD_RAIZ?>permissao/confirmar_permissao",
+                url: "<?=GD_RAIZ?>permissao/confirmar_remover_acesso",
                 data: dados,
-                success: function(data){ 
+                success: function(data){ alert(data);
                     if(data==1){ 
-                        $('#msg').html('<div id="msg" class="alert alert-warning"> Nem todas as permissões selecionadas foram inseridas. </div>');
+                        $('#msg').html('<div id="msg" class="alert alert-warning"> Nem todas os acessos selecionadas foram deletados. </div>');
                         $('#load').hide();
                         location.reload(); 
                     }else if(data == 2){
-                        $('#msg').html('<div id="msg" class="alert alert-danger"> Erro ao inserir as permissões. </div>');
+                        $('#msg').html('<div id="msg" class="alert alert-danger"> Erro ao excluir as permissões. </div>');
                         location.reload(); 
                     }else if(data == 3){
-                        $('#msg').html('<div id="msg" class="alert alert-success"> Permissões inseridas com sucesso. </div>');
+                        $('#msg').html('<div id="msg" class="alert alert-success"> Acessos removidos com sucesso. </div>');
                         location.reload(); 
                 	} 
 

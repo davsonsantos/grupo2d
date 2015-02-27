@@ -6,6 +6,7 @@ class Usuarios extends CI_Controller {
         parent:: __construct();             
         init_sistema();
         esta_logado();
+		tem_acesso();
         $this->load->model('admin/usuarios_model','usuarios');
     }
     
@@ -20,6 +21,7 @@ class Usuarios extends CI_Controller {
 
 
     public function index(){
+    	tem_acesso();
         if($this->session->userdata('user_master') == 1){
             $dados = $this->usuarios->get_all($this->session->userdata('user_unidade'))->result();
         }else{

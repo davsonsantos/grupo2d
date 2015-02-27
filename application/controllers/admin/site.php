@@ -12,6 +12,7 @@ class Site extends CI_Controller {
     
     
     public function configuracao(){
+    	tem_acesso();
     	$conf = $this->site->dados_conf()->result();
 		$l = explode(".", $conf[0]->site_logo);
 		$logo = $l[0]."_thumb.".$l[1];
@@ -45,6 +46,7 @@ class Site extends CI_Controller {
 	
 	
 	public function portifolio(){
+		tem_acesso();
         $data = array(
             'titulo'=>'Lista de Projetos Realizados',
             'lista'=>$this->site->get_projetos(FALSE)->result()
@@ -136,6 +138,7 @@ class Site extends CI_Controller {
     }
 
 	public function parceiros(){
+		tem_acesso();
         $data = array(
             'titulo'=>'Lista de Parceiros',
             'lista'=>$this->site->get_parceiros()->result()

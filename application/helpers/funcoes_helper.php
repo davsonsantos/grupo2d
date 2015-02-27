@@ -18,17 +18,20 @@ function set_msg($id='msgerro', $msg=NULL, $tipo='erro'){
     $CI =& get_instance();
     switch ($tipo):
             case 'erro': 
-                    $CI->session->set_flashdata($id, '<div class="alert alert-danger alert-dismissable"><p>'.$msg.'</p></div>');
+                    $CI->session->set_flashdata($id, '<div  class="alert alert-danger"><p>'.$msg.'</p></div>');
                     break;
             case 'sucesso': 
                     $CI->session->set_flashdata($id, '<div class="alert alert-success"><p>'.$msg.'</p></div>');
                     break;
             case 'aviso': 
-                    $CI->session->set_flashdata($id, '<div class="alert alert-warning alert-dismissable"><p>'.$msg.'</p></div>');
+                    $CI->session->set_flashdata($id, '<div class="alert alert-warning"><p>'.$msg.'</p></div>');
                     break;
             case 'info': 
-                    $CI->session->set_flashdata($id, '<div class="alert alert-info alert-dismissable"><p>'.$msg.'</p></div>');
+                    $CI->session->set_flashdata($id, '<div class="alert alert-info"><p>'.$msg.'</p></div>');
                     break;
+			case 'permissao':
+					$CI->session->set_flashdata($id,'<div class="alert alert-icon alert-danger"><i class="icon-close"></i>'.$msg.'</div>');
+					break;
             default: 
                     $CI->session->set_flashdata($id, '<div class="alert alert-info alert-dismissable">'.$msg.'</p></div>');
                     break;
@@ -42,7 +45,6 @@ function esta_logado($redir=TRUE){
     $user_status = $CI->session->userdata('user_logado');
     if (!isset($user_status) || $user_status != TRUE){
         if ($redir){
-            #$CI->session->set_userdata(array('redir_para'=>current_url()));
            set_msg('errologin', 'Acesso restrito, faça login antes de prosseguir', 'erro');
            redirect(GD_RAIZ.'login/index');
         }else{
@@ -51,6 +53,24 @@ function esta_logado($redir=TRUE){
     }else{
         return TRUE;
     }
+}
+
+//verifico se o usuario tem acesso ao programa que estar acessando
+function tem_acesso($redir=TRUE){
+    $CI =& get_instance();
+	$CI->load->model('admin/seguranca/permissao_model', 'permissao');
+	$acesso = $CI->permissao->lista_usuario_permissao($CI->session->userdata('user_id'))->result();
+	$erro = 0;
+    foreach ($acesso as $row) {
+    	if($CI->uri->slash_segment(2).$CI->uri->segment(3) == $row->mod_formulario){
+    		$erro++;
+		}
+    }
+	
+	if($erro == 0){
+		set_msg('msgerro', 'Você não tem permissao de acesso a página solicitada', 'permissao');
+		redirect(GD_RAIZ.'inicio/index');	
+	}
 }
 
 //verifica se existe uma mensagem para ser exibida na tela atual

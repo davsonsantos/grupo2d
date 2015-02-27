@@ -43,7 +43,9 @@ function excluir_usuario(id) { alert(id);
                             &nbsp;
                             <a class="ttips" href="#<?= $l->usu_id ?>" data-toggle="modal" data-original-title="Excluir Registro"><span class="icon-remove-2" aria-hidden="true"></span></a>
    							&nbsp;
-   							<a class="ttips" href="<?=GD_RAIZ?>permissao/permissao_usuario?id=<?=base64_encode($l->usu_id) ?>" data-placement="top" data-toggle="tooltip" data-original-title="Permissão de Acesso"> <span class="icon-lock" aria-hidden="true"></span></a>
+   							<a class="ttips" href="<?=GD_RAIZ?>permissao/permissao_usuario?id=<?=base64_encode($l->usu_id) ?>" data-placement="top" data-toggle="tooltip" data-original-title="Permissão de Acesso"> <span class="icon-unlocked" aria-hidden="true"></span></a>
+   							&nbsp;
+   							<a class="ttips" href="<?=GD_RAIZ?>permissao/remove_permisao?id=<?=base64_encode($l->usu_id) ?>" data-placement="top" data-toggle="tooltip" data-original-title="Remover Permissão"> <span class="icon-lock" aria-hidden="true"></span></a>
    							
                             <div aria-hidden="true" role="dialog" tabindex="-1" id="<?= $l->usu_id ?>" class="modal fade" style="display: none;">
                                 <div class="modal-dialog modal-narrow">
@@ -72,7 +74,8 @@ function excluir_usuario(id) { alert(id);
                 <td class="gradeX text-right" colspan="5">
                         Legenda: <span class="icon-pencil-2" aria-hidden="true"></span> &nbsp;Editar Registro&nbsp;
                                  <span class="icon-remove-2" aria-hidden="true"></span> &nbsp;Excluir Registro&nbsp;
-                                 <span class="icon-lock" aria-hidden="true"></span> &nbsp;Permissão de Acesso
+                                 <span class="icon-unlocked" aria-hidden="true"></span> &nbsp;Permissão de Acesso
+                                 <span class="icon-lock" aria-hidden="true"></span> &nbsp;Remover Permissões
                     </td>
                 </th>
             </tfoot>
