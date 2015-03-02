@@ -157,7 +157,7 @@ jQuery(document).ready(function(){
             <form action="" id="form_login" name="form_login" class="login" method="post">
                 <input type="text" class="form-control" style="width: 100%" placeholder="Login" name="usuario">
                 <input type="password" class="form-control" style="width: 100%" placeholder="Senha" name="senha">
-                <button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" id="botao" class="btn btn-default">Login</button>
             </form>
         </div>
     </div><!--settingsinner-->
@@ -172,6 +172,8 @@ jQuery(document).ready(function(){
 jQuery(document).ready(function(){
     jQuery('#form_login').submit(function(){	
         if (jQuery("#form_login").validationEngine('validate')) {
+        	jQuery('#botao').addClass( "alert" );
+        	jQuery('#botao').html('Acessando...');
             var dados = jQuery( this ).serialize();
             jQuery.ajax({
                 type: "POST",
@@ -179,7 +181,11 @@ jQuery(document).ready(function(){
                 data: dados,
                 success: function(data){
                     if(data==1){
+                    	jQuery('#botao').addClass( "alert-success" );
                         location.href='<?= GD_RAIZ ?>inicio/index'	//Redireciona
+                    }else{
+                    	jQuery('#botao').addClass( "alert-error" );
+                        jQuery('#botao').html('Erro ao Acessar');
                     }
                 } 
             }) 

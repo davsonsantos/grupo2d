@@ -14,7 +14,6 @@ $this->load->view('admin/layout/header');
     </div>
 
 	<div class="row m-container">
-		
     	<div class="col-md-12 simple-list masonry">	
     			<?php echo get_msg('msgerro') ?>
     	</div>
