@@ -9,9 +9,7 @@
  *  ratio = manter proporcao true/false
  *  thumb = criar ou nao um thumbnail
  */
-function upload_imagem($arquivo,$dados){
-	print_r($dados); 
-    
+function upload_imagem($arquivo,$dados){    
     $CI =& get_instance();
     
     $caminho = ''.$_SERVER['DOCUMENT_ROOT'].'/grupo2d/assets/upload/'.$dados['diretorio'].'/';
@@ -41,7 +39,7 @@ function upload_imagem($arquivo,$dados){
 
     if ( ! $CI->upload->do_upload($file)){
         $error = array('error' => $CI->upload->display_errors());
-        return $error;
+        return false;
     }else{
         $image = $CI->upload->data();
         $anexo =  $image['raw_name'].$image['file_ext'];

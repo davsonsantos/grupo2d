@@ -32,11 +32,11 @@
 					<h4>Outros Detalhes</h4>
 					<table>
 						<tbody>
-							<tr>
-								<td width="40%"><span class="iconfa-laptop"></span><strong>Published</strong></td>
-								<td width="60%" style="text-align: right;">January 30, 2013</td>
+							 <tr>
+								<td width="40%"><span class="iconfa-laptop"></span><strong>Publicado em:</strong></td>
+								<td width="60%" style="text-align: right;"><?=formata_data($detalhe[0]->por_publicacao, 'br')?></td>
 							</tr>
-							<tr>
+							<!--<tr>
 								<td><span class="iconfa-thumbs-up"></span> &nbsp;<strong>Like</strong></td>
 								<td style="text-align: right;">16</td>
 							</tr>
@@ -47,11 +47,13 @@
 							<tr>
 								<td><span class="iconfa-eye-open"></span> &nbsp;<strong>Views</strong></td>
 								<td style="text-align: right;">20,130</td>
-							</tr>
+							</tr> -->
+							<?php if(!empty($detalhe[0]->por_link)){ ?>
 							<tr>
 								<td><span class="iconfa-link"></span> &nbsp;<strong>URL</strong></td>
-								<td style="text-align: right;"><a href="">http://sarta.na/1st</a></td>
+								<td style="text-align: right;"><a href="<?=$detalhe[0]->por_link?>" target="_blank"><?=$detalhe[0]->por_link?></a></td>
 							</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div><!--projectdetails-->

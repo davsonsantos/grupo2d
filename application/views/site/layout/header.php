@@ -27,9 +27,8 @@
 
                             <!-- START OF LEFT PANEL -->
                             <div class="leftpanel">
-
                                 <div class="logopanel">
-                                    <a href=""><img src="<?=SITE_RAIZ?>assets/upload/configuracao/thumb/<?=$logo?>" alt="<?=$titulo?>"></a>
+                                    <a href="<?=SITE_RAIZ?>"><img src="<?=SITE_RAIZ?>assets/upload/configuracao/thumb/<?=$logo?>" alt="<?=$titulo?>"></a>
                                 </div>
                                 <!--
                                                                 <div class="searchpanel">
