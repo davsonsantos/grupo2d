@@ -25,7 +25,8 @@ class Site_model extends CI_Model {
 			$compl = " order by por_id";	
 		}
 		$sql = "SELECT * FROM tb_portifolio p
-				INNER JOIN tb_categoria_projeto c ON p.cat_projeto_id = c.cat_projeto_id ".$compl;
+				INNER JOIN tb_categoria_projeto c ON p.cat_projeto_id = c.cat_projeto_id 
+				INNER JOIN tb_parceiros pa on pa.par_id = p.par_id".$compl;
 		return $this->db->query($sql);
 	}
 	
@@ -57,13 +58,14 @@ class Site_model extends CI_Model {
 	public function get_byIdprojeto($id=NULL){
         $sql = "SELECT * FROM tb_portifolio p
 				INNER JOIN tb_categoria_projeto c ON p.cat_projeto_id = c.cat_projeto_id
+				INNER JOIN tb_parceiros pa on pa.par_id = p.par_id
 				 where por_id=".$id;
         return $this->db->query($sql);
     }
 	
 	public function editar_projeto($dados){
         $sql = "update tb_portifolio set por_nome = '".$dados['por_nome']."', por_descricao = '".$dados['por_descricao']."',
-                                      por_img = '".$dados['por_img']."', por_link = '".$dados['por_link']."' 
+                                      por_img = '".$dados['por_img']."', por_link = '".$dados['por_link']."', par_id = '".$dados['par_id']."'  
                                       where por_id = ".$dados['por_id'];
         if ($this->db->query($sql)){
             return true;
@@ -73,7 +75,8 @@ class Site_model extends CI_Model {
     }
 	
 	function get_parceiros(){
-		$sql = "SELECT * FROM tb_parceiros";
+		$sql = "SELECT * FROM tb_parceiros p
+		         INNER JOIN tb_especialidade_parceiro e on p.esp_par_id = e.esp_par_id";
 		return $this->db->query($sql);
 	}
 	
@@ -104,7 +107,7 @@ class Site_model extends CI_Model {
     
     public function editar_parceiro($dados){
         $sql = "update tb_parceiros set par_nome = '".$dados['par_nome']."', par_descricao = '".$dados['par_descricao']."',
-                                      par_img = '".$dados['par_img']."'  where par_id = ".$dados['par_id'];
+                                      par_img = '".$dados['par_img']."', esp_par_id = ".$dados['esp_par_id']."  where par_id = ".$dados['par_id'];
         if ($this->db->query($sql)){
             return true;
         }else{
@@ -112,4 +115,8 @@ class Site_model extends CI_Model {
         }
     }
 	
+	function get_esp_parceiro(){
+		$sql = "SELECT * FROM tb_especialidade_parceiro";
+		return $this->db->query($sql);
+	}
 }

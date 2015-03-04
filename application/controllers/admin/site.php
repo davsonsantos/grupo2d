@@ -63,7 +63,8 @@ class Site extends CI_Controller {
                     'botao'=>'Cadastrar',
                     'cor'=>'success',
                     'dados'=>'',
-                    'categoria'=>$this->site->get_categoria()->result()
+                    'categoria'=>$this->site->get_categoria()->result(),
+					'parceiro'=>$this->site->get_parceiros()->result()
 					);
                 
                 break;
@@ -74,7 +75,9 @@ class Site extends CI_Controller {
                             'cor'=>'warning',
                             'id'=>$this->input->get('id'),
                             'categoria'=>$this->site->get_categoria()->result(),
-                            'dados'=>$this->site->get_byIdprojeto($this->input->get('id'))->row());
+                            'dados'=>$this->site->get_byIdprojeto($this->input->get('id'))->row(),
+							'parceiro'=>$this->site->get_parceiros()->result()
+							);
                 break;
             default:
                 
@@ -94,7 +97,9 @@ class Site extends CI_Controller {
                                'por_descricao'=>$this->input->post('por_descricao'),
                                'por_img'=>$anexo,
 							   'por_link'=>$this->input->post('por_link'),
-							   'cat_projeto_id'=>$this->input->post('cat_projeto_id'));
+							   'cat_projeto_id'=>$this->input->post('cat_projeto_id'),
+							   'par_id'=>$this->input->post('par_id')
+							   );
 							   
                 $sucesso = $this->site->inserir_projeto($dados);
 				if ($sucesso){
@@ -106,14 +111,16 @@ class Site extends CI_Controller {
             case 'editar':
 				$config_img = array('diretorio'=>'portifolio','w'=>370,'h'=>240,'ratio'=>FALSE);
 		        $anexo = upload_imagem('logo',$config_img);
-				if(!$anexo){
+				if($anexo==false){
 					$anexo = $this->input->post('img');
 				}
                 $dados = array('por_nome'=>  $this->input->post('por_nome'),
                                'por_descricao'=>$this->input->post('por_descricao'),
                                'por_img'=>$anexo,
 							   'por_link'=>$this->input->post('por_link'),
-							   'cat_projeto_id'=>$this->input->post('id'));
+							   'par_id'=>$this->input->post('par_id'),
+							   'cat_projeto_id'=>$this->input->post('cat_projeto_id'),
+							   'por_id'=>$this->input->post('id'));
                 $sucesso = $this->site->editar_projeto($dados);
 				if ($sucesso){
 		            set_msg('msg', 'Dados Editados com sucesso', 'sucesso');
@@ -154,9 +161,9 @@ class Site extends CI_Controller {
                     'acao'=>$acao,
                     'botao'=>'Cadastrar',
                     'cor'=>'success',
-                    'dados'=>''
+                    'dados'=>'',
+                   	'especialidade'=>$this->site->get_esp_parceiro()->result()
 					);
-                
                 break;
             case 'editar':
                 $data = array('titulo'=>'Editar Parceiro',
@@ -164,7 +171,9 @@ class Site extends CI_Controller {
                             'botao'=>'Editar',
                             'cor'=>'warning',
                             'id'=>$this->input->get('id'),
-                            'dados'=>$this->site->get_byIdparceiro($this->input->get('id'))->row());
+                            'dados'=>$this->site->get_byIdparceiro($this->input->get('id'))->row(),
+							'especialidade'=>$this->site->get_esp_parceiro()->result());
+							print_r($data['dados']);
                 break;
             default:
                 
@@ -180,9 +189,13 @@ class Site extends CI_Controller {
             case 'novo':
 				$config_img = array('diretorio'=>'parceiro','w'=>370,'h'=>240,'ratio'=>FALSE);
 		        $anexo = upload_imagem('logo',$config_img);
+				if($anexo==false){
+					$anexo = $this->input->post('img');
+				}
                 $dados = array('par_nome'=>  $this->input->post('par_nome'),
                                'par_descricao'=>$this->input->post('par_descricao'),
                                'par_img'=>$anexo,
+                               'esp_par_id'=>$this->input->post('esp_par_id')
 							   );
 							   
                 $sucesso = $this->site->inserir_parceiro($dados);
@@ -201,6 +214,7 @@ class Site extends CI_Controller {
                 $dados = array('par_nome'=>  $this->input->post('par_nome'),
                                'par_descricao'=>$this->input->post('par_descricao'),
                                'par_img'=>$anexo,
+                               'esp_par_id'=>$this->input->post('esp_par_id'),
 							   'par_id'=>$this->input->post('id'));
                 $sucesso = $this->site->editar_parceiro($dados);
 				if ($sucesso){

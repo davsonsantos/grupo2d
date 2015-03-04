@@ -9,20 +9,18 @@ class Inicio extends CI_Controller {
     }
     
     public function index(){
-    	//logomarca	
-    	$conf = $this->site->dados_conf()->result();
-		$l = explode(".", $conf[0]->site_logo);
-		$logo = $l[0]."_thumb.".$l[1];
-		
-    	$data = array('titulo'=>$conf[0]->site_titulo,
-					  'logo'=>$logo,
+		$logo = logo_site();
+    	$data = array('titulo'=>$logo['titulo'],'logo'=>$logo['logo'],
 					  'projetos' => $this->site->get_projetos(TRUE)->result()
 					  );
+
         $this->load->view('site/index',$data);
     }
 	
     function t_contato(){
-        $this->load->view('site/contato');
+    	$logo = logo_site();
+		$data = array('titulo'=>$logo['titulo'],'logo'=>$logo['logo']);
+        $this->load->view('site/contato',$data);
     }
 	
     function error404() { 
@@ -46,5 +44,28 @@ class Inicio extends CI_Controller {
 	function detalhe(){
 		$data = array('detalhe'=>$this->site->get_byIdprojeto($this->input->get('item'))->result());
 		$this->load->view('site/det_portifolio',$data);
+	}
+	
+	function sobre(){
+		$logo = logo_site();
+		$data = array('titulo'=>$logo['titulo'],
+					  'logo'=>$logo['logo']);
+        $this->load->view('site/sobre',$data);
+	}
+	
+	function parceiros(){
+		$logo = logo_site();
+		$data = array('titulo'=>$logo['titulo'],
+					  'logo'=>$logo['logo'],
+					  'parceiros' => $this->site->get_parceiros(TRUE)->result());
+        $this->load->view('site/parcerias',$data);
+	}
+	
+	function servicos(){
+		$logo = logo_site();
+		$data = array('titulo'=>$logo['titulo'],
+					  'logo'=>$logo['logo'],
+					  'parceiros' => $this->site->get_parceiros(TRUE)->result());
+        $this->load->view('site/servicos',$data);
 	}
 }

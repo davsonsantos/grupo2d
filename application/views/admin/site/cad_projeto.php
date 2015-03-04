@@ -18,6 +18,7 @@ error_reporting (0)
                 $conf = $dados->por_img;
 				$l = explode(".", $dados->por_img);
 				$logo = $l[0]."_thumb.".$l[1];
+				
                 ?>                
                 <div class="c-block" id="basic">
                     <div class="form-group">
@@ -31,11 +32,22 @@ error_reporting (0)
                     </div>
                 </div>
                         
-                        
                 <div class="c-block" id="basic">
                     <div class="form-group">
                         <label for="Nome">Nome</label> <span class="text-danger">*</span>
                         <input type="text" class="form-control validate[required]" name="por_nome" id="por_nome" placeholder="Nome do Projeto" value="<?= $dados->por_nome ?>">
+                    </div>
+                </div>
+                
+                <div class="c-block" id="basic">
+                    <div class="form-group">
+                        <label for="Sistema">Desenvolvido por:</label> <span class="text-danger">*</span>
+                        <select class="form-control validate[required]" id="par_id" name="par_id">
+                            <option value="">Selecione o Parceiro</option>
+                            <?php foreach ($parceiro as $p){?>
+                            <option <?php if($dados->par_id == $p->par_id) echo "selected='selected'"; ?> value="<?=$p->par_id?>"><?=$p->par_nome?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 

@@ -32,6 +32,19 @@ error_reporting (0)
                         <input type="text" class="form-control validate[required]" name="par_descricao" id="par_descricao" placeholder="Informações do Parceiro" value="<?= $dados->par_descricao?>">
                     </div>
                 </div>
+                
+                <div class="c-block" id="basic">
+                    <div class="form-group">
+                        <label for="Especilaidade">Especialidade</label> <span class="text-danger">*</span>
+                        <select class="form-control validate[required]" id="esp_par_id" name="esp_par_id">
+                            <option value="">Selecione a Especialidade</option>
+                            <?php foreach ($especialidade as $e){?>
+                            <option <?php if($dados->esp_par_id == $e->esp_par_id) echo "selected='selected'"; ?> value="<?=$e->esp_par_id?>"><?=$e->esp_par_descricao?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+                        
                                 
                 <div class="c-block" id="upload">
 	                <label for="Icon">Imagem</label> <span class="text-danger">Só informe caso queira mudar</span>   
@@ -51,7 +64,7 @@ error_reporting (0)
                 </div>
                 
                 <button type="submit" id="salvar" class="btn btn-sm btn-<?= $cor ?>" value="<?= $botao ?>"><span class="icon-plus"></span> <?= $botao ?></button>
-                <a href="<?=GD_RAIZ?>site/portifolio" class="btn btn-info btn-sm btn-danger"><span class="icon-undo-2"></span> Cancelar</a>
+                <a href="<?=GD_RAIZ?>site/parceiros" class="btn btn-info btn-sm btn-danger"><span class="icon-undo-2"></span> Cancelar</a>
                 
                 
             </form>

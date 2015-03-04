@@ -95,32 +95,19 @@
 		<li>
 			<a href="<?=SITE_RAIZ?>"><span class="iconfa-home"></span> Home</a>
 		</li>
-		<li>
-			<a href=""><span class="iconfa-star"></span> Conheça-nos</a>
+
+		<li class="current">
+			<a href="index.html"><span class="iconfa-star"></span> Conheça-nos</a>
 			<i class="iconfa-angle-right sub-indicator"></i>
 			<ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-                <li>
-                    <a href="#">SERVIÇOS</a>
-                    <i class="iconfa-angle-right sub-indicator"></i>
-                    <ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-                        <li><a href="#">Desenvolvimento</a></li>
-                        <li><a href="#">Suporte Técnico</a></li>
-                        <li><a href="#">Infraestrutura</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">PARCERIAS</a>
-                    <i class="iconfa-angle-right sub-indicator"></i>
-                    <ul class="sf-js-enabled sf-shadow" style="display: none; visibility: hidden;">
-                        <li><a href="#">JSC INFO</a></li>
-                        <li><a href="#">iGuerreiro Artes Gráficas</a></li>
-                    </ul>
-                </li>
+				<li><a href="<?=SITE_RAIZ?>site/inicio/sobre">O GRUPO</a></li>
+                <li><a href="<?=SITE_RAIZ?>site/inicio/parceiros">PERCEIRIAS</a></li>
+                <li><a href="<?=SITE_RAIZ?>site/inicio/servicos">SERVIÇOS</a></li>
 			</ul>
 		</li>
-		<li>
+		<!-- <li>
 			<a href="<?=SITE_RAIZ?>site/portifolio"><span class="iconfa-picture"></span> Portifolio</a>
-		</li>
+		</li> -->
 		<li>
 			<a href="<?=SITE_RAIZ?>site/inicio/t_contato"><span class="iconfa-envelope"></span> Contato</a>
 		</li>
