@@ -14,7 +14,7 @@ function excluir_usuario(id) { alert(id);
     <header class="p-header">
         <h2 class="p-title"><?= $titulo ?></h2>
         <div class="config dropdown">
-            <a class="btn btn-info btn-sm" href="<?=GD_RAIZ?>permissao/cadastro_usuario?acao=<?=base64_encode("novo")?>" data-toggle=""><span class="icon-plus"></span>&nbsp;Novo Usuário</a>            
+            <a class="btn btn-info btn-sm" href="<?=GD_RAIZ?>permissao/cadastro_usuario?acao=<?=base64_encode("novo")?>" data-toggle=""><span class="icon-plus"></span>&nbsp;Novo Usuário</a>
         </div>
     </header>
     <?php echo get_msg("msg")?>
