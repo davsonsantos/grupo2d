@@ -54,37 +54,37 @@ class Site extends CI_Controller {
         $this->load->view('admin/site/lista_portifolio',$data);
     }
 	
-	function cadastro_projeto(){
-        $acao = base64_decode($this->input->get('acao'));
-        switch ($acao) {
-            case 'novo':
-                $data = array('titulo'=>'Novo Projeto',
-                    'acao'=>$acao,
-                    'botao'=>'Cadastrar',
-                    'cor'=>'success',
-                    'dados'=>'',
-                    'categoria'=>$this->site->get_categoria()->result(),
-					'parceiro'=>$this->site->get_parceiros()->result()
-					);
-                
-                break;
-            case 'editar':
-                $data = array('titulo'=>'Editar Projeto',
-                            'acao'=>$acao,
-                            'botao'=>'Editar',
-                            'cor'=>'warning',
-                            'id'=>$this->input->get('id'),
-                            'categoria'=>$this->site->get_categoria()->result(),
-                            'dados'=>$this->site->get_byIdprojeto($this->input->get('id'))->row(),
-							'parceiro'=>$this->site->get_parceiros()->result()
-							);
-                break;
-            default:
-                
-                break;       
-        }
-        $this->load->view('admin/site/cad_projeto',$data);
-    }
+		function cadastro_projeto(){
+	        $acao = base64_decode($this->input->get('acao'));
+	        switch ($acao) {
+	            case 'novo':
+	                $data = array('titulo'=>'Novo Projeto',
+	                    'acao'=>$acao,
+	                    'botao'=>'Cadastrar',
+	                    'cor'=>'success',
+	                    'dados'=>'',
+	                    'categoria'=>$this->site->get_categoria()->result(),
+						'parceiro'=>$this->site->get_parceiros()->result()
+						);
+	                
+	                break;
+	            case 'editar':
+	                $data = array('titulo'=>'Editar Projeto',
+	                            'acao'=>$acao,
+	                            'botao'=>'Editar',
+	                            'cor'=>'warning',
+	                            'id'=>$this->input->get('id'),
+	                            'categoria'=>$this->site->get_categoria()->result(),
+	                            'dados'=>$this->site->get_byIdprojeto($this->input->get('id'))->row(),
+								'parceiro'=>$this->site->get_parceiros()->result()
+								);
+	                break;
+	            default:
+	                
+	                break;       
+	        }
+	        $this->load->view('admin/site/cad_projeto',$data);
+	    }
 
 	function confirmar_projeto(){
         $acao = $this->input->get_post('acao');
