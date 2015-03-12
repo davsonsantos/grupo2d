@@ -5,8 +5,7 @@ class Usuarios extends CI_Controller {
     public function __construct() {
         parent:: __construct();             
         init_sistema();
-        esta_logado();
-		tem_acesso();
+		
         $this->load->model('admin/usuarios_model','usuarios');
     }
     

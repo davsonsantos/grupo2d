@@ -4,7 +4,9 @@ class Login extends CI_Controller {
 
     public function __construct() {
         parent:: __construct();   
-        init_sistema();
+  //      init_sistema();
+		$this->load->library(array('sistema', 'session'));
+		$this->load->helper(array('form', 'url', 'array', 'text','email'));
         $this->load->model('admin/usuarios_model','usuarios',TRUE);
     }
     

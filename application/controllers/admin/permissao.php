@@ -5,7 +5,6 @@ class Permissao extends CI_Controller {
     function __construct() {
         parent::__construct();
         init_sistema();
-        esta_logado();
         $this->load->model('admin/seguranca/permissao_model', 'permissao');
     }
     

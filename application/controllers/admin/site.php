@@ -5,7 +5,6 @@ class Site extends CI_Controller {
     function __construct() {
         parent::__construct();
         init_sistema();
-        esta_logado();
 		$this->load->helper(array('upload'));
         $this->load->model('admin/site/site_model', 'site');
     }
@@ -29,7 +28,6 @@ class Site extends CI_Controller {
         $config_img = array('diretorio'=>'configuracao','w'=>230,'h'=>81,'ratio'=>TRUE);
         $anexo = upload_imagem('logo',$config_img);
         if(is_array($anexo)){
-        	echo "aqui";
         	$conf = $this->site->dados_conf()->result();
             $anexo = $conf[0]->site_logo;
         }
