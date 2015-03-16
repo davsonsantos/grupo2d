@@ -5,7 +5,9 @@ function init_sistema() {
     $CI =& get_instance();
     $CI->load->library(array('sistema', 'session', 'form_validation','pagination'));
     $CI->load->helper(array('form', 'url', 'array', 'text','email'));
-	esta_logado();
+	if($CI->uri->segment(2) == 'admin'){
+		esta_logado();
+	}
 	if(!$CI->uri->segment(2) == 'inicio'){
 	//	tem_acesso();
 	}
