@@ -9,9 +9,12 @@ class Inicio extends CI_Controller {
     }
     
     public function index(){
+    //	print_r($_SERVER); 
+	//	echo ip2long($_SERVER['REMOTE_ADDR']);
 		$logo = logo_site();
     	$data = array('titulo'=>$logo['titulo'],'logo'=>$logo['logo'],
-					  'projetos' => $this->site->get_projetos(TRUE)->result()
+					  'projetos' => $this->site->get_projetos(TRUE)->result(),
+					  'visitas'=>$this->site->visitas()
 					  );
 
         $this->load->view('site/index',$data);
